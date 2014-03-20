@@ -24,9 +24,11 @@
         <cc:MachineFilter ref="sec_in_all_deny" />
         <cc:MachineFilter ref="sec_out_all_allow" />
         <cc:MachineFilter ref="sec_in_443" />
-        <cc:MachineFilter ref="sec_in_10050" />
+        <cc:MachineFilter ref="sec_in_10050_private" />
         <cc:MachineFilter ref="sec_in_icmp" />
         <cc:MachineFilter ref="sec_in_22_internal_dmz" />
+        <cc:MachineFilter ref="sec_in_22_internal_private" />
+        <cc:MachineFilter ref="sec_in_10050_dmz" />
       </cc:MachineFilters>
     </cc:Machine>
     <cc:Machine id="small-server-zabbix">
@@ -45,13 +47,14 @@
         <cc:MachineFilter ref="sec_in_udp_53_private" />
         <cc:MachineFilter ref="sec_in_3128_private" />
         <cc:MachineFilter ref="sec_in_22" />
-        <cc:MachineFilter ref="sec_in_10050_dmz" />
         <cc:MachineFilter ref="sec_in_10051_dmz" />
         <cc:MachineFilter ref="sec_in_10051_private" />
         <cc:MachineFilter ref="sec_in_tcp_53_dmz" />
         <cc:MachineFilter ref="sec_in_udp_53_dmz" />
         <cc:MachineFilter ref="sec_in_3128_dmz" />
         <cc:MachineFilter ref="sec_out_all_allow" />
+        <cc:MachineFilter ref="sec_in_10050_private" />
+        <cc:MachineFilter ref="sec_in_10050_dmz" />
       </cc:MachineFilters>
     </cc:Machine>
     <cc:Machine id="ap-server">
@@ -69,6 +72,8 @@
         <cc:MachineFilter ref="sec_in_icmp" />
         <cc:MachineFilter ref="sec_in_22_internal_dmz" />
         <cc:MachineFilter ref="sec_in_10050_dmz" />
+        <cc:MachineFilter ref="sec_in_10050_private" />
+        <cc:MachineFilter ref="sec_in_22_internal_private" />
       </cc:MachineFilters>
     </cc:Machine>
     <cc:Machine id="db-server">
@@ -85,12 +90,15 @@
         </cc:Volume>
       </cc:Volumes>
       <cc:MachineFilters>
-        <cc:MachineFilter ref="sec_in_10050_dmz" />
-        <cc:MachineFilter ref="sec_in_5432" />
+        <cc:MachineFilter ref="sec_in_5432_private" />
         <cc:MachineFilter ref="sec_in_all_deny" />
         <cc:MachineFilter ref="sec_out_all_allow" />
         <cc:MachineFilter ref="sec_in_icmp" />
         <cc:MachineFilter ref="sec_in_22_internal_dmz" />
+        <cc:MachineFilter ref="sec_in_5432_dmz" />
+        <cc:MachineFilter ref="sec_in_22_internal_private" />
+        <cc:MachineFilter ref="sec_in_10050_dmz" />
+        <cc:MachineFilter ref="sec_in_10050_private" />
       </cc:MachineFilters>
     </cc:Machine>
   </cc:Machines>
@@ -281,7 +289,7 @@
       <cc:Source>all</cc:Source>
       <cc:RuleAction>allow</cc:RuleAction>
     </cc:MachineFilter>
-    <cc:MachineFilter id="sec_in_10050">
+    <cc:MachineFilter id="sec_in_10050_private">
       <cc:Protocol>tcp</cc:Protocol>
       <cc:Port>10050</cc:Port>
       <cc:Direction>ingress</cc:Direction>
@@ -298,6 +306,20 @@
     <cc:MachineFilter id="sec_in_22_internal_dmz">
       <cc:Protocol>tcp</cc:Protocol>
       <cc:Port>22</cc:Port>
+      <cc:Direction>ingress</cc:Direction>
+      <cc:Source ref="dmz_g1" />
+      <cc:RuleAction>allow</cc:RuleAction>
+    </cc:MachineFilter>
+    <cc:MachineFilter id="sec_in_22_internal_private">
+      <cc:Protocol>tcp</cc:Protocol>
+      <cc:Port>22</cc:Port>
+      <cc:Direction>ingress</cc:Direction>
+      <cc:Source ref="private_net_g1" />
+      <cc:RuleAction>allow</cc:RuleAction>
+    </cc:MachineFilter>
+    <cc:MachineFilter id="sec_in_10050_dmz">
+      <cc:Protocol>tcp</cc:Protocol>
+      <cc:Port>10050</cc:Port>
       <cc:Direction>ingress</cc:Direction>
       <cc:Source ref="dmz_g1" />
       <cc:RuleAction>allow</cc:RuleAction>
@@ -328,13 +350,6 @@
       <cc:Port>22</cc:Port>
       <cc:Direction>ingress</cc:Direction>
       <cc:Source>all</cc:Source>
-      <cc:RuleAction>allow</cc:RuleAction>
-    </cc:MachineFilter>
-    <cc:MachineFilter id="sec_in_10050_dmz">
-      <cc:Protocol>tcp</cc:Protocol>
-      <cc:Port>10050</cc:Port>
-      <cc:Direction>ingress</cc:Direction>
-      <cc:Source ref="dmz_g1" />
       <cc:RuleAction>allow</cc:RuleAction>
     </cc:MachineFilter>
     <cc:MachineFilter id="sec_in_10051_dmz">
@@ -379,11 +394,18 @@
       <cc:Source ref="dmz_g1" />
       <cc:RuleAction>allow</cc:RuleAction>
     </cc:MachineFilter>
-    <cc:MachineFilter id="sec_in_5432">
+    <cc:MachineFilter id="sec_in_5432_private">
       <cc:Protocol>tcp</cc:Protocol>
       <cc:Port>5432</cc:Port>
       <cc:Direction>ingress</cc:Direction>
       <cc:Source ref="private_net_g1" />
+      <cc:RuleAction>allow</cc:RuleAction>
+    </cc:MachineFilter>
+    <cc:MachineFilter id="sec_in_5432_dmz">
+      <cc:Protocol>tcp</cc:Protocol>
+      <cc:Port>5432</cc:Port>
+      <cc:Direction>ingress</cc:Direction>
+      <cc:Source ref="dmz_g1" />
       <cc:RuleAction>allow</cc:RuleAction>
     </cc:MachineFilter>
   </cc:MachineFilters>

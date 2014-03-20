@@ -3,7 +3,7 @@
   <ccm:Nodes>
     <ccm:Node id="cloud1" xsi:type="ccm:Infrastructure">
       <ccm:x>132.5</ccm:x>
-      <ccm:y>24.5</ccm:y>
+      <ccm:y>34.5</ccm:y>
       <ccm:z>0</ccm:z>
       <ccm:width>1050</ccm:width>
       <ccm:height>560</ccm:height>
@@ -74,7 +74,7 @@
     </ccm:Link>
     <ccm:Link>
       <ccm:Source ref="dmz1">
-        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(3)    </ccm:Selector>
+        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(3)</ccm:Selector>
       </ccm:Source>
       <ccm:Target ref="small-server-zabbix">
         <ccm:Selector>g:nth-child(1) g:nth-child(2)</ccm:Selector>
@@ -82,7 +82,7 @@
     </ccm:Link>
     <ccm:Link>
       <ccm:Source ref="private_net1">
-        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(2)    </ccm:Selector>
+        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(2)</ccm:Selector>
       </ccm:Source>
       <ccm:Target ref="ap-server">
         <ccm:Selector>g:nth-child(1) g:nth-child(2)</ccm:Selector>
@@ -90,7 +90,7 @@
     </ccm:Link>
     <ccm:Link>
       <ccm:Source ref="private_net1">
-        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(3)    </ccm:Selector>
+        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(3)</ccm:Selector>
       </ccm:Source>
       <ccm:Target ref="db-server">
         <ccm:Selector>g:nth-child(1) g:nth-child(2)</ccm:Selector>
