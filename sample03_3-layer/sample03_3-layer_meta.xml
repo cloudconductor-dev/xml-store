@@ -8,12 +8,6 @@
       <ccm:width>1050</ccm:width>
       <ccm:height>560</ccm:height>
     </ccm:Node>
-    <ccm:Node id="public_net1" xsi:type="ccm:Network">
-      <ccm:x>270.5</ccm:x>
-      <ccm:y>80.5</ccm:y>
-      <ccm:z>1</ccm:z>
-      <ccm:children>1</ccm:children>
-    </ccm:Node>
     <ccm:Node id="dmz1" xsi:type="ccm:Network">
       <ccm:x>457.5</ccm:x>
       <ccm:y>231.5</ccm:y>
@@ -58,12 +52,6 @@
     </ccm:Node>
   </ccm:Nodes>
   <ccm:Links>
-    <ccm:Link>
-      <ccm:Source ref="public_net1">
-        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(1)</ccm:Selector>
-      </ccm:Source>
-      <ccm:Target ref="router" />
-    </ccm:Link>
     <ccm:Link>
       <ccm:Source ref="router" />
       <ccm:Target ref="dmz1">

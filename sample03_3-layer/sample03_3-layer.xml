@@ -197,8 +197,8 @@
         <cc:Middleware ref="deploy_cookbook" />
         <cc:Middleware ref="nsupdate_cookbook" />
       </cc:Middlewares>
-      <cc:Import type="chef_runlist">https://raw.github.com/cloudconductor-dev/chef-parameters/master/chef_runlist_apache.json</cc:Import>
-      <cc:Import type="chef_attribute">https://raw.github.com/cloudconductor-dev/chef-parameters/master/chef_attr_apache.json</cc:Import>
+      <cc:Import type="chef_runlist">https://raw.github.com/cloudconductor-dev/chef-parameters/release-0.2.0/chef_runlist_apache.json</cc:Import>
+      <cc:Import type="chef_attribute">https://raw.github.com/cloudconductor-dev/chef-parameters/release-0.2.0/chef_attr_apache.json</cc:Import>
       <cc:UserInputKeys>
         <cc:UserInputKey>apache.contact</cc:UserInputKey>
       </cc:UserInputKeys>
@@ -211,8 +211,8 @@
         <cc:Middleware ref="deploy_cookbook" />
         <cc:Middleware ref="nsupdate_cookbook" />
       </cc:Middlewares>
-      <cc:Import type="chef_runlist">https://raw.github.com/cloudconductor-dev/chef-parameters/master/chef_runlist_zabbix.json</cc:Import>
-      <cc:Import type="chef_attribute">https://raw.github.com/cloudconductor-dev/chef-parameters/master/chef_attr_zabbix.json</cc:Import>
+      <cc:Import type="chef_runlist">https://raw.github.com/cloudconductor-dev/chef-parameters/release-0.2.0/chef_runlist_zabbix.json</cc:Import>
+      <cc:Import type="chef_attribute">https://raw.github.com/cloudconductor-dev/chef-parameters/release-0.2.0/chef_attr_zabbix.json</cc:Import>
     </cc:Role>
     <cc:Role type="chef" id="ap_role">
       <cc:Name>AP Server Role</cc:Name>
@@ -338,9 +338,6 @@
     </cc:MachineFilter>
   </cc:MachineFilters>
   <cc:Networks>
-    <cc:Network id="public_net1">
-      <cc:Name>public network 1</cc:Name>
-    </cc:Network>
     <cc:Network id="dmz1">
       <cc:Name>dmz 1</cc:Name>
     </cc:Network>
@@ -349,27 +346,6 @@
     </cc:Network>
   </cc:Networks>
   <cc:NetworkGroups>
-    <cc:NetworkGroup id="public_net_g1">
-      <cc:Name>public network group 1</cc:Name>
-      <cc:Networks>
-        <cc:Network ref="public_net1">
-          <cc:Infrastructures>
-            <cc:Infrastructure ref="cloud1" />
-          </cc:Infrastructures>
-        </cc:Network>
-      </cc:Networks>
-      <cc:NetworkFilters>
-        <cc:NetworkFilter ref="acl_in_80_to_pub" />
-        <cc:NetworkFilter ref="acl_in_all_deny" />
-        <cc:NetworkFilter ref="acl_out_all_allow" />
-        <cc:NetworkFilter ref="acl_in_icmp" />
-      </cc:NetworkFilters>
-      <cc:Routes>
-        <cc:Route ref="route_all" />
-        <cc:Route ref="route_dmz_g1" />
-        <cc:Route ref="route_private_net_g1" />
-      </cc:Routes>
-    </cc:NetworkGroup>
     <cc:NetworkGroup id="dmz_g1">
       <cc:Name>dmz group 1</cc:Name>
       <cc:Networks>
@@ -380,10 +356,9 @@
         </cc:Network>
       </cc:Networks>
       <cc:NetworkFilters>
-        <cc:NetworkFilter ref="acl_in_80_pub_to_dmz" />
-        <cc:NetworkFilter ref="acl_in_all_deny" />
-        <cc:NetworkFilter ref="acl_out_all_allow" />
-        <cc:NetworkFilter ref="acl_in_icmp" />
+        <cc:NetworkFilter ref="acl_in_80_dmz_to_pri" />
+        <cc:NetworkFilter ref="acl_in_80_dmz_to_pri" />
+        <cc:NetworkFilter ref="acl_in_80_dmz_to_pri" />
         <cc:NetworkFilter ref="acl_in_10050_priv_to_dmz" />
       </cc:NetworkFilters>
       <cc:Routes>
@@ -402,9 +377,9 @@
       </cc:Networks>
       <cc:NetworkFilters>
         <cc:NetworkFilter ref="acl_in_80_dmz_to_pri" />
-        <cc:NetworkFilter ref="acl_in_all_deny" />
-        <cc:NetworkFilter ref="acl_out_all_allow" />
-        <cc:NetworkFilter ref="acl_in_icmp" />
+        <cc:NetworkFilter ref="acl_in_10050_priv_to_dmz" />
+        <cc:NetworkFilter ref="acl_in_10050_priv_to_dmz" />
+        <cc:NetworkFilter ref="acl_in_10050_priv_to_dmz" />
       </cc:NetworkFilters>
       <cc:Routes>
         <cc:Route ref="route_all" />
@@ -427,41 +402,6 @@
     </cc:Route>
   </cc:Routes>
   <cc:NetworkFilters>
-    <cc:NetworkFilter id="acl_in_80_to_pub">
-      <cc:Protocol>tcp</cc:Protocol>
-      <cc:Port>80</cc:Port>
-      <cc:Direction>ingress</cc:Direction>
-      <cc:Source>all</cc:Source>
-      <cc:RuleAction>allow</cc:RuleAction>
-    </cc:NetworkFilter>
-    <cc:NetworkFilter id="acl_in_all_deny">
-      <cc:Protocol>tcp</cc:Protocol>
-      <cc:Port>all</cc:Port>
-      <cc:Direction>ingress</cc:Direction>
-      <cc:Source>all</cc:Source>
-      <cc:RuleAction>deny</cc:RuleAction>
-    </cc:NetworkFilter>
-    <cc:NetworkFilter id="acl_out_all_allow">
-      <cc:Protocol>tcp</cc:Protocol>
-      <cc:Port>all</cc:Port>
-      <cc:Direction>egress</cc:Direction>
-      <cc:Destination>all</cc:Destination>
-      <cc:RuleAction>allow</cc:RuleAction>
-    </cc:NetworkFilter>
-    <cc:NetworkFilter id="acl_in_icmp">
-      <cc:Protocol>icmp</cc:Protocol>
-      <cc:Port>all</cc:Port>
-      <cc:Direction>ingress</cc:Direction>
-      <cc:Source>all</cc:Source>
-      <cc:RuleAction>allow</cc:RuleAction>
-    </cc:NetworkFilter>
-    <cc:NetworkFilter id="acl_in_80_pub_to_dmz">
-      <cc:Protocol>tcp</cc:Protocol>
-      <cc:Port>80</cc:Port>
-      <cc:Direction>ingress</cc:Direction>
-      <cc:Source ref="public_net_g1" />
-      <cc:RuleAction>allow</cc:RuleAction>
-    </cc:NetworkFilter>
     <cc:NetworkFilter id="acl_in_10050_priv_to_dmz">
       <cc:Protocol>tcp</cc:Protocol>
       <cc:Port>10050</cc:Port>
