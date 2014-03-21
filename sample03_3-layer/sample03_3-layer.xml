@@ -251,7 +251,7 @@
         <cc:Middleware ref="nsupdate_cookbook" />
       </cc:Middlewares>
       <cc:Import type="chef_runlist">https://raw.github.com/cloudconductor-dev/chef-parameters/release-0.2.0/chef_runlist_postgresql.json</cc:Import>
-      <cc:Import type="chef_attribute">https://raw.github.com/cloudconductor-dev/chef-parameters/release-0.2.0/chef_attr_zabbix.json</cc:Import>
+      <cc:Import type="chef_attribute">https://raw.github.com/cloudconductor-dev/chef-parameters/release-0.2.0/chef_attr_postgresql.json</cc:Import>
     </cc:Role>
   </cc:Roles>
   <cc:Volumes>
