@@ -132,6 +132,9 @@
       <cc:NodeType>
         <cc:Single />
       </cc:NodeType>
+      <cc:Monitorings>
+        <cc:Monitoring ref="LinuxOS" />
+      </cc:Monitorings>
     </cc:MachineGroup>
     <cc:MachineGroup id="ap-server-g" ref="ap-server">
       <cc:Name>AP Server Group</cc:Name>
