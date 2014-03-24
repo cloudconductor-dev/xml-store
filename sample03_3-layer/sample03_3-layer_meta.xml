@@ -9,16 +9,16 @@
       <ccm:height>560</ccm:height>
     </ccm:Node>
     <ccm:Node id="dmz1" xsi:type="ccm:Network">
-      <ccm:x>387.5</ccm:x>
-      <ccm:y>231.5</ccm:y>
+      <ccm:x>389.5</ccm:x>
+      <ccm:y>240.5</ccm:y>
       <ccm:z>2</ccm:z>
       <ccm:children>3</ccm:children>
     </ccm:Node>
     <ccm:Node id="private_net1" xsi:type="ccm:Network">
-      <ccm:x>266.5</ccm:x>
+      <ccm:x>263.5</ccm:x>
       <ccm:y>358.5</ccm:y>
       <ccm:z>3</ccm:z>
-      <ccm:children>4</ccm:children>
+      <ccm:children>3</ccm:children>
     </ccm:Node>
     <ccm:Node id="router" xsi:type="ccm:Router">
       <ccm:x>328.5</ccm:x>
@@ -26,28 +26,28 @@
       <ccm:z>4</ccm:z>
     </ccm:Node>
     <ccm:Node id="machine_1" xsi:type="ccm:Machine">
-      <ccm:x>552.5</ccm:x>
-      <ccm:y>279.5</ccm:y>
+      <ccm:x>559.5</ccm:x>
+      <ccm:y>280.5</ccm:y>
       <ccm:z>7</ccm:z>
     </ccm:Node>
     <ccm:Node id="small-server-zabbix" xsi:type="ccm:Machine">
-      <ccm:x>715.5</ccm:x>
-      <ccm:y>286.5</ccm:y>
+      <ccm:x>709.5</ccm:x>
+      <ccm:y>280.5</ccm:y>
       <ccm:z>9</ccm:z>
     </ccm:Node>
     <ccm:Node id="ap-server" xsi:type="ccm:Machine">
-      <ccm:x>447.5</ccm:x>
+      <ccm:x>433.5</ccm:x>
       <ccm:y>400.5</ccm:y>
       <ccm:z>12</ccm:z>
     </ccm:Node>
     <ccm:Node id="db-server" xsi:type="ccm:Machine">
-      <ccm:x>603.5</ccm:x>
-      <ccm:y>403.5</ccm:y>
+      <ccm:x>583.5</ccm:x>
+      <ccm:y>400.5</ccm:y>
       <ccm:z>13</ccm:z>
     </ccm:Node>
     <ccm:Node id="test_vol1" xsi:type="ccm:Volume">
-      <ccm:x>665.5</ccm:x>
-      <ccm:y>495.5</ccm:y>
+      <ccm:x>643.5</ccm:x>
+      <ccm:y>500.5</ccm:y>
       <ccm:z>16</ccm:z>
     </ccm:Node>
   </ccm:Nodes>
@@ -57,6 +57,12 @@
       <ccm:Target ref="dmz1">
         <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(1)</ccm:Selector>
       </ccm:Target>
+      <ccm:Vertices>
+        <ccm:Vertice>
+          <ccm:x>470</ccm:x>
+          <ccm:y>120</ccm:y>
+        </ccm:Vertice>
+      </ccm:Vertices>
     </ccm:Link>
     <ccm:Link>
       <ccm:Source ref="dmz1">
